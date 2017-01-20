@@ -62,7 +62,7 @@ pagination_dir: page   #分页目录
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: landscape
+theme: hexo-theme-next-master
 feed:
   type: atom       #feed 类型 (atom/rss2)
   path: atom.xml   #rss 路径
