@@ -5,7 +5,7 @@
 # Site 网站
 title: HoltYin   #网站标题
 subtitle:   #网站副标题
-description: 清醒时做事，糊涂时读书；<br>大怒时睡觉，独处时思考。   #网站描述
+description: 学。   #网站描述
 author: HoltYin
 language: zh-Hans
 timezone:           #网站时区。Hexo 默认使用您电脑的时区
@@ -24,7 +24,7 @@ archive_dir: archives   #归档文件夹
 category_dir: categories   #分类文件夹
 code_dir: downloads/code    #nclude code 文件夹
 i18n_dir: :lang   #国际化（i18n）文件夹
-skip_render:   #跳过指定文件的渲染，您可使用 glob 表达式来匹配路径。
+skip_render:  #跳过指定文件的渲染，您可使用 glob 表达式来匹配路径。[images/*, images/**/*]
 
 # Writing 文章
 new_post_name: :title.md   # 新建文章默认文件名
