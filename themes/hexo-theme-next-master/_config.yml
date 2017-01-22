@@ -285,13 +285,14 @@ duoshuo_shortname: holtyin
 # Available value:
 #    button | slide
 # Warning: Baidu Share does not support https.
-baidushare: true
+#baidushare: true
 ##  type: button
 
 # Share
 #jiathis:
 # Warning: JiaThis does not support https.
 #add_this_id:
+#duoshuo_share: true
 
 # Share
 #duoshuo_share: true
