@@ -71,13 +71,15 @@ feed:
 # 多说
 duoshuo_shortname: HoltYin #评论
 duoshuo_hotartical: true #热评文章 true 或者 false
-duoshuo_share: true #分享服务
+duoshuo_share: false #分享服务
 
 # 百度统计
 baidu_analytics: d4f506cb1cf77dc05bda61962ec07088
 
 # Swiftype搜索
 swiftype_key:
+# 分享
+jiathis: true
 
 # 微搜索
 ## 首先安装 hexo-generator-searchdb，在站点的根目录下执行以下命令：npm install hexo-generator-searchdb --save

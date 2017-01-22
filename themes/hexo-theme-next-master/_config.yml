@@ -3,7 +3,7 @@
 # ---------------------------------------------------------------
 
 # Put your favicon.ico into `hexo-site/source/` directory.
-favicon: /favicon.ico
+favicon: favicon.ico
 
 # Set default keywords (Use a comma to separate)
 keywords: "Hexo, NexT"
@@ -208,7 +208,7 @@ excerpt_description: true
 # Automatically Excerpt. Not recommand.
 # Please use <!-- more --> in the post to control excerpt accurately.
 auto_excerpt:
-  enable: false
+  enable: true
   length: 150
 
 # Post meta display settings
@@ -466,12 +466,6 @@ vendors:
   # Internal version: 1.0.0
   # https://github.com/hustcc/canvas-nest.js
   canvas_nest:
-  #搜索
-  search:
-    path: search.xml
-    field: post
-    format: html
-    limit: 10000
 
 
 
