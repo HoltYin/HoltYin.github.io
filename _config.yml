@@ -6,8 +6,8 @@
 title: HoltYin   #网站标题
 subtitle:   #网站副标题
 description: 学。   #网站描述
-author: HoltYin
-language: zh-Hans
+author: HoltYin     #作者名
+language: zh-Hans   #语言类型，这个设置是中文
 timezone:           #网站时区。Hexo 默认使用您电脑的时区
 
 # URL 网址

@@ -37,7 +37,7 @@ seo: false
 # When running the site in a subdirectory (e.g. domain.tld/blog), remove the leading slash (/archives -> archives)
 menu:
   home: /
-  #categories: /categories
+  categories: /categories
   #about: /about
   archives: /archives
   tags: /tags
@@ -188,11 +188,12 @@ sidebar:
 
 
 # Blogrolls
-#links_title: Links
-#links_layout: block
-#links_layout: inline
-#links:
-  #Title: http://example.com/
+links_title: 肥皂链接
+links_layout: block
+links:
+  追星少年: http://cmin.me
+  半步多: https://jadyer.github.io/
+  前端踩坑那些事: http://febugs.com
 
 
 # ---------------------------------------------------------------
