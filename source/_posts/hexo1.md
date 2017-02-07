@@ -7,7 +7,7 @@ top: 10
 ## 下载并安装node.js
    安装完毕后，可以在dos控制台输入node -v查看版本号。
 ## 下载git
-   这里与远程github间最好是SSH加密方式，不懂的同学参考。[git命令小结](http://note.youdao.com/)
+   这里与远程github间最好是SSH加密方式，不懂的同学参考。[git命令小结](https://jadyer.github.io/2015/09/14/git-command/)
 ## 安装hexo
    在dos控制台npm install -g hexo-cli
 ## 初始化hexo
