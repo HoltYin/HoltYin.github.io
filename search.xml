@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title><![CDATA[github利用hexo搭建博客]]></title>
+    <url>%2F2018%2F01%2F03%2Fhexo1%2F</url>
+    <content type="text"><![CDATA[下载并安装node.js111 安装完毕后，可以在dos控制台输入node -v查看版本号…h。 下载git 这里与远程github间最好是SSH加密方式，不懂的同学参考。git命令小结 安装hexo 在dos控制台npm install -g hexo-cli 初始化hexo 1.在某个你指定的目录下打开dos控制台（可以先进入目录，然后在顶部输入cmd） 2.输入命令hexo init 文件名（我的是文件名是blog） 拉取远程blog项目 1.在github上新建一个仓库 2.从github上将新建的仓库拉到idea上（我使用的工具是idea，这里假设拉取到工作目录的文件名是remoteblog） 在本地仓库中引入hexo 1.将前面init的blog目录中的东西全部copy到remoteblog目录中 2.在remoteblog目录下的dos控制台输入命令npm install,下载package.json中的依赖 本地启动hexo 1.改一下本地blog项目下_config.yml文件中的配置，可以参考网上的配置，百度一下，一大片 2.在remoteblog目录下的dos控制台输入命令 hexo clean 3.hexo g 4.hexo s -p 5000 5.在浏览器输入localhost:5000就可以访问你的本地blog了 部署到github 1.在remoteblog目录下的dos控制台输入命令 hexo clean 2.hexo g 3.hexo d 到此就可以去你的github上访问的你的博客了。一般地址是https://加上]]></content>
+      <categories>
+        <category>hexo</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Hello World]]></title>
+    <url>%2F2018%2F01%2F03%2Fhello-world%2F</url>
+    <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
+  </entry>
+  <entry>
+    <title><![CDATA[高并发处理及注意事项]]></title>
+    <url>%2F2018%2F01%2F03%2F%E9%AB%98%E5%B9%B6%E5%8F%911%2F</url>
+    <content type="text"><![CDATA[高并发存在的问题同时向服务器发起的请求过多，导致服务器或者数据库崩溃宕机并发时，多个线程对相同资源进行访问，此时，线程安全问题出现可能出现，导致数据异常高并发解决方法面对第一种情况，可以分三个方面进行优化1.nginx+负载均衡，分发请求到不同的服务器（一般这种方法是运维考虑的）2.提高程序效率&nbsp;&nbsp;&nbsp;&nbsp;a.优化代码，减少程序执行时间，以减小单位时间内的并发数&nbsp;&nbsp;&nbsp;&nbsp;b.使用连接池，限制连接数&nbsp;&nbsp;&nbsp;&nbsp;c.优化代码中的SQL，减少与数据库交互的时间&nbsp;&nbsp;&nbsp;&nbsp;d.对于不需要实时同步的数据，可以多采用定时任务去同步&nbsp;&nbsp;&nbsp;&nbsp;f.不考虑线程安全的地方，可以考虑异步处理3.优化数据库设计&nbsp;&nbsp;&nbsp;&nbsp;a.给经常需要查询的字段添加索引，提高查询效率（需要添加合适的索引，不恰当的索引有可能引起反效果，索引过多也会一定程度上降低更新或插入操作）&nbsp;&nbsp;&nbsp;&nbsp;b.分库分表（并发数很大，或者数据库表存储记录太多时）&nbsp;&nbsp;&nbsp;&nbsp;c.尽量使用正确存储数据的最小数据类型 面对地二种情况，可以分两个方面进行规避1.在程序方面规避&nbsp;&nbsp;&nbsp;&nbsp;a.对多个线程可能同时请求的资源加锁。保证数据的一致性&nbsp;&nbsp;&nbsp;&nbsp;b.使用线程安全的数据结构&nbsp;&nbsp;&nbsp;&nbsp;c.单线程排队处理发往服务器的请求（不建议，速度太慢了）&nbsp;&nbsp;&nbsp;&nbsp;d.使用redis缓存数据（redis单线程，且处理速度快）redis解决高并发问题实例2.在数据库方面规避&nbsp;&nbsp;&nbsp;&nbsp;a.特定场景下可以用加唯一索引的方式来保证线程安全。 暂时只想到这么多，后期想到其他方法会及时补充！]]></content>
+      <categories>
+        <category>java高并发</category>
+      </categories>
+      <tags>
+        <tag>高并发</tag>
+        <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[反向代理与代理]]></title>
+    <url>%2F2018%2F01%2F03%2F%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C1%2F</url>
+    <content type="text"><![CDATA[反向代理反向代理隐藏了真实的服务端。因为客户端的请求进来，直接连接的是反向代理服务器，通过反向代理服务器发送请求至服务端 代理（正向代理）代理隐藏了真实的请求客户端。客户端发起的请求，都是通过代理服务器代替来请求的]]></content>
+      <categories>
+        <category>计算机网络</category>
+      </categories>
+      <tags>
+        <tag>代理</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[大数据与数据挖掘]]></title>
+    <url>%2F2018%2F01%2F03%2F%E6%9C%AF%E8%AF%AD%E6%A6%82%E5%BF%B51%2F</url>
+    <content type="text"><![CDATA[大数据 既是一堆数据，又是一种对数据的应用；它更强调实时性，比如你才提交一个请求，然后后台就会通过你以往的大量数据来为你找个请求服务（蚂蚁借呗实时授信）。大数据具有四V一O的特点即Volume 大体量、Variety 复杂多样、Velocity 高速时效、价值密度低（Value）、数据是在线的（Online） 数据挖掘 不讲究实时性，是对海量数据通过一系列的算法进行分析，找出数据之间的关系和规律]]></content>
+      <categories>
+        <category>术语概念</category>
+      </categories>
+      <tags>
+        <tag>大数据</tag>
+        <tag>数据挖掘</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[redis解决高并发问题实例]]></title>
+    <url>%2F2018%2F01%2F03%2Fredis2%2F</url>
+    <content type="text"><![CDATA[应用场景需要统计友情链接的点击次数，并在后台管理系统中实时显示 存在问题前端可能有多个用户同时点击友情连接，需要考虑对高并发的处理 解决问题使用技术redis+mysql数据库+java 解决方案利用redis缓存每天的数据，数据库中存储除今天外的历史总点击数，每日定时从redis中将缓存数据存入数据库中，并清除redis中缓存数据 方案具体步骤1.在redis中约定一个key的value来存每天友情链接的点击数，数据库中有一个字段会存除今日外的历史总点击数2.前端每次有用户点击友情链接时，会往后台发送请求，后台会往redis中的每天友情链接点击数+13.每日定时将redis中存的每天友情链接点击数同步到数据库的历史总点击数中，并清空redis中存的每天友情链接点击数4.后台管理系统查看点击数时，会取出数据库中的历史总点击数+redis中的每天点击数，则为实时的友情链接点击数 解决问题关键所在1.redis是单线程，无线程安全问题2.redis性能高，Redis读的速度是110000次/s,写的速度是81000次/s，只要不是极端情况下的并发，基本上都可以处理 弊端1.极端情况下的并发情况仍然无法解决]]></content>
+      <categories>
+        <category>redis</category>
+      </categories>
+      <tags>
+        <tag>redis</tag>
+        <tag>高并发</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[redis在高并发请求下会出现问题吗？]]></title>
+    <url>%2F2018%2F01%2F03%2Fredis1%2F</url>
+    <content type="text"><![CDATA[redis简介1.key-value形式的nosql存储系统2.单线程，不会发生线程安全问题3.性能高，Redis读的速度是110000次/s,写的速度是81000次/s redis在极高的并发情况下会出现哪些问题在java中，一般是使用jedis作为客户端连接redis，虽然redis是单线程的，但是jedis是多线程的，并且jedis每次操作都会对redis发起一次连接。当jedis作为客户端，对redis发起大量的并发请求时，redis会排队处理连接请求，从而导致客户端的连接超时，从而出现各种各样的问题 解决方法1.jedis通过连接池来连接redis，这样可以限制最大连接数，以防止连接数过大时，redis读写速度跟不上2.在jedis对redis发起set，get等高频率操作时，加上锁，保证同一时刻只有一个线程调用]]></content>
+      <categories>
+        <category>redis</category>
+      </categories>
+      <tags>
+        <tag>redis</tag>
+        <tag>高并发</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[数据库事物隔离级别]]></title>
+    <url>%2F2018%2F01%2F03%2Fmysql1%2F</url>
+    <content type="text"><![CDATA[事物隔离级别未提交读 写事务阻止其他写事务，但是没有阻止其他读事务； 提交读 写事务会阻止其他读写事务。读事务不会阻止其他任何事务； 重复读 读事务会阻止其他写事务，但是不会阻止其他读事务； 可串行化 读加共享锁，写加排他锁； 可重复读、不可重复读区别不可重复读（提交读） 只能看到提交后的数据；在事物A中第一次读取某行记录后，事物B对该行数据进行了修改并提交，这时事物A再次读取该行记录会发现与第一次读取到的该行记录不同 可重复读（重复读） 在事物A开启时，该事物所影响的记录将会被全部锁定，所以其它事物不能对这些记录进行操作，所以在事物A中多次读取相同的记录，得到的结果相同 脏读、虚读、幻读区别脏读 事务可以读取未提交的数据 虚读 会在不可重复读隔离级别中出现，即同一事物两次读取同一行记录，但是数据不同（因为数据被其它事物修改了） 幻读 会在可重复读隔离级别中出现，可重复读阻止的写事务包括update和delete（只给存在的表加上了锁），但是不包括insert，所以同一条SQL语句查询的结果可能会多。 共享锁、排它锁区别共享锁（读锁） 读锁是共享的，或者说是相互不阻塞的 排它锁（写锁） 写锁则是排他的，也就是说一个写锁会阻塞其它的写锁和读锁。]]></content>
+      <categories>
+        <category>mysql学习笔记</category>
+      </categories>
+      <tags>
+        <tag>sql</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[maven学习笔记01--github创建项目，拉取到本地转换成maven项目]]></title>
+    <url>%2F2018%2F01%2F03%2Fmaven1%2F</url>
+    <content type="text"><![CDATA[1.start a project2.Repository name根据自己喜好取3.开源的就先public，否则选择private（根据自己需求选择）4.add .gitignore选择maven5.add a license 啥协议，随便选吧6.add a readme,写点自己项目的记录文档（markdown格式）7.clone or download，复制项目clone地址8.打开idea，VCS—&gt;checkout from…..—&gt;github—&gt;在url栏粘贴刚才复制的地址—&gt;create project…—&gt;一直选择next—&gt;finish—&gt;选择现有窗口打开项目还是新窗口打开项目9.至此已经成功clone github项目至本地仓库10.拷贝一个pom.xml文件至项目根目录下（与readme同级）11.在pom.xml文件中添加groupId，artifactId，version，packaging&nbsp;&nbsp;&nbsp;&nbsp;1）groupId定义了项目属于哪个组（建议命名为包路径前缀，例如，如果你的公司是mycom，有一个组是mygroup，此项目属于mygroup，那么groupId就应该是com.mycom.mygroup）&nbsp;&nbsp;&nbsp;&nbsp;2）artifactId定义了当前maven模块在项目中唯一的ID（建议命名为项目名-模块名,例如，若项目名是myapp，模块名为sdk，则artifactId可以为myapp-sdk）&nbsp;&nbsp;&nbsp;&nbsp;3）version按个人需求定义版本，SNAPSHOT意为快照，说明该项目还处于开发中，是不稳定的版本.&nbsp;&nbsp;&nbsp;&nbsp;4）packaging定义项目产生的构件类型，例如jar、war、ear、pom。插件可以创建他们自己的构件类型，所以前面列的不是全部构件类型12.右键pom.xml选择add as maven project—&gt;ignore….13.右键项目，new—&gt;module—&gt;maven—&gt;create from ….—&gt;next14.此时只需要在输入artifactId和module name就可以了。]]></content>
+      <categories>
+        <category>maven</category>
+      </categories>
+      <tags>
+        <tag>maven</tag>
+      </tags>
+  </entry>
+</search>
