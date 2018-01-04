@@ -1,6 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[redis在高并发请求下会出现问题吗？]]></title>
+    <url>%2F2018%2F01%2F04%2Fredis1%2F</url>
+    <content type="text"><![CDATA[redis简介1.key-value形式的nosql存储系统2.单线程，不会发生线程安全问题3.性能高，Redis读的速度是110000次/s,写的速度是81000次/s redis在极高的并发情况下会出现哪些问题在java中，一般是使用jedis作为客户端连接redis，虽然redis是单线程的，但是jedis是多线程的，并且jedis每次操作都会对redis发起一次连接。当jedis作为客户端，对redis发起大量的并发请求时，redis会排队处理连接请求，从而导致客户端的连接超时，从而出现各种各样的问题 解决方法1.jedis通过连接池来连接redis，这样可以限制最大连接数，以防止连接数过大时，redis读写速度跟不上2.在jedis对redis发起set，get等高频率操作时，加上锁，保证同一时刻只有一个线程调用]]></content>
+      <categories>
+        <category>redis</category>
+      </categories>
+      <tags>
+        <tag>redis</tag>
+        <tag>高并发</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[redis解决高并发问题实例]]></title>
+    <url>%2F2018%2F01%2F04%2Fredis2%2F</url>
+    <content type="text"><![CDATA[应用场景需要统计友情链接的点击次数，并在后台管理系统中实时显示 存在问题前端可能有多个用户同时点击友情连接，需要考虑对高并发的处理 解决问题使用技术redis+mysql数据库+java 解决方案利用redis缓存每天的数据，数据库中存储除今天外的历史总点击数，每日定时从redis中将缓存数据存入数据库中，并清除redis中缓存数据 方案具体步骤1.在redis中约定一个key的value来存每天友情链接的点击数，数据库中有一个字段会存除今日外的历史总点击数2.前端每次有用户点击友情链接时，会往后台发送请求，后台会往redis中的每天友情链接点击数+13.每日定时将redis中存的每天友情链接点击数同步到数据库的历史总点击数中，并清空redis中存的每天友情链接点击数4.后台管理系统查看点击数时，会取出数据库中的历史总点击数+redis中的每天点击数，则为实时的友情链接点击数 解决问题关键所在1.redis是单线程，无线程安全问题2.redis性能高，Redis读的速度是110000次/s,写的速度是81000次/s，只要不是极端情况下的并发，基本上都可以处理 弊端1.极端情况下的并发情况仍然无法解决]]></content>
+      <categories>
+        <category>redis</category>
+      </categories>
+      <tags>
+        <tag>redis</tag>
+        <tag>高并发</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[二叉树前序，中序，后序遍历]]></title>
     <url>%2F2018%2F01%2F04%2F%E4%BA%8C%E5%8F%89%E6%A0%912%2F</url>
     <content type="text"><![CDATA[package 树; import java.util.ArrayList; import java.util.List; public class Tree { private Node root; private List&lt;Node&gt; list=new ArrayList&lt;Node&gt;(); public Tree(){ init(); } //树的初始化:先从叶节点开始,由叶到根 public void init(){ Node x=new Node(&quot;X&quot;,null,null); Node y=new Node(&quot;Y&quot;,null,null); Node d=new Node(&quot;d&quot;,x,y); Node e=new Node(&quot;e&quot;,null,null); Node f=new Node(&quot;f&quot;,null,null); Node c=new Node(&quot;c&quot;,e,f); Node b=new Node(&quot;b&quot;,d,null); Node a=new Node(&quot;a&quot;,b,c); root =a; } //定义节点类： private class Node{ private String data; private Node lchid;//定义指向左子树的指针 private Node rchild;//定义指向右子树的指针 public Node(String data,Node lchild,Node rchild){ this.data=data; this.lchid=lchild; this.rchild=rchild; } } /** * 对该二叉树进行前序遍历 结果存储到list中 前序遍历:ABDXYCEF */ public void preOrder(Node node) { list.add(node); //先将根节点存入list //如果左子树不为空继续往左找，在递归调用方法的时候一直会将子树的根存入list，这就做到了先遍历根节点 if(node.lchid != null) { preOrder(node.lchid); } //无论走到哪一层，只要当前节点左子树为空，那么就可以在右子树上遍历，保证了根左右的遍历顺序 if(node.rchild != null) { preOrder(node.rchild); } } /** * 对该二叉树进行中序遍历 结果存储到list中 */ public void inOrder(Node node) { if(node.lchid!=null){ inOrder(node.lchid); } list.add(node); if(node.rchild!=null){ inOrder(node.rchild); } } /** * 对该二叉树进行后序遍历 结果存储到list中 */ public void postOrder(Node node) { if(node.lchid!=null){ postOrder(node.lchid); } if(node.rchild!=null){ postOrder(node.rchild); } list.add(node); } /** * 返回当前数的深度 * 说明: * 1、如果一棵树只有一个结点，它的深度为1。 * 2、如果根结点只有左子树而没有右子树，那么树的深度是其左子树的深度加1； * 3、如果根结点只有右子树而没有左子树，那么树的深度应该是其右子树的深度加1； * 4、如果既有右子树又有左子树，那该树的深度就是其左、右子树深度的较大值再加1。 * * @return */ public int getTreeDepth(Node node) { if(node.lchid == null &amp;&amp; node.rchild == null) { return 1; } int left=0,right = 0; if(node.lchid!=null) { left = getTreeDepth(node.lchid); } if(node.rchild!=null) { right = getTreeDepth(node.rchild); } return left&gt;right?left+1:right+1; } //得到遍历结果 public List&lt;Node&gt; getResult() { return list; } public static void main(String[] args) { Tree tree=new Tree(); System.out.println(&quot;根节点是:&quot;+tree.root); //tree.preOrder(tree.root); tree.postOrder(tree.root); for(Node node:tree.getResult()){ System.out.println(node.data); } System.out.println(&quot;树的深度是&quot;+tree.getTreeDepth(tree.root)); } }]]></content>
@@ -77,30 +101,6 @@
       <tags>
         <tag>大数据</tag>
         <tag>数据挖掘</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[redis解决高并发问题实例]]></title>
-    <url>%2F2018%2F01%2F03%2Fredis2%2F</url>
-    <content type="text"><![CDATA[应用场景需要统计友情链接的点击次数，并在后台管理系统中实时显示 存在问题前端可能有多个用户同时点击友情连接，需要考虑对高并发的处理 解决问题使用技术redis+mysql数据库+java 解决方案利用redis缓存每天的数据，数据库中存储除今天外的历史总点击数，每日定时从redis中将缓存数据存入数据库中，并清除redis中缓存数据 方案具体步骤1.在redis中约定一个key的value来存每天友情链接的点击数，数据库中有一个字段会存除今日外的历史总点击数2.前端每次有用户点击友情链接时，会往后台发送请求，后台会往redis中的每天友情链接点击数+13.每日定时将redis中存的每天友情链接点击数同步到数据库的历史总点击数中，并清空redis中存的每天友情链接点击数4.后台管理系统查看点击数时，会取出数据库中的历史总点击数+redis中的每天点击数，则为实时的友情链接点击数 解决问题关键所在1.redis是单线程，无线程安全问题2.redis性能高，Redis读的速度是110000次/s,写的速度是81000次/s，只要不是极端情况下的并发，基本上都可以处理 弊端1.极端情况下的并发情况仍然无法解决]]></content>
-      <categories>
-        <category>redis</category>
-      </categories>
-      <tags>
-        <tag>redis</tag>
-        <tag>高并发</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[redis在高并发请求下会出现问题吗？]]></title>
-    <url>%2F2018%2F01%2F03%2Fredis1%2F</url>
-    <content type="text"><![CDATA[redis简介1.key-value形式的nosql存储系统2.单线程，不会发生线程安全问题3.性能高，Redis读的速度是110000次/s,写的速度是81000次/s redis在极高的并发情况下会出现哪些问题在java中，一般是使用jedis作为客户端连接redis，虽然redis是单线程的，但是jedis是多线程的，并且jedis每次操作都会对redis发起一次连接。当jedis作为客户端，对redis发起大量的并发请求时，redis会排队处理连接请求，从而导致客户端的连接超时，从而出现各种各样的问题 解决方法1.jedis通过连接池来连接redis，这样可以限制最大连接数，以防止连接数过大时，redis读写速度跟不上2.在jedis对redis发起set，get等高频率操作时，加上锁，保证同一时刻只有一个线程调用]]></content>
-      <categories>
-        <category>redis</category>
-      </categories>
-      <tags>
-        <tag>redis</tag>
-        <tag>高并发</tag>
       </tags>
   </entry>
   <entry>
