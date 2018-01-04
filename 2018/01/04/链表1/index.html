@@ -84,18 +84,18 @@
 
 
 
-<meta name="description" content="public class Code {private int data;private Code next;public int getData() { return data;}public void setData(int data) { this.data = data;}public Code getNext() { return next;}public void setNext(Cod">
+<meta name="description" content="public class Code { private int data; private Code next; public int getData() {  return data; } public void setData(int data) {  this.data = data; } public Code getNext() {  return next; } public void">
 <meta name="keywords" content="数据结构">
 <meta property="og:type" content="article">
 <meta property="og:title" content="java链表的插入，删除，遍历">
 <meta property="og:url" content="http://HoltYin.github.io/2018/01/04/链表1/index.html">
 <meta property="og:site_name" content="HoltYin">
-<meta property="og:description" content="public class Code {private int data;private Code next;public int getData() { return data;}public void setData(int data) { this.data = data;}public Code getNext() { return next;}public void setNext(Cod">
+<meta property="og:description" content="public class Code { private int data; private Code next; public int getData() {  return data; } public void setData(int data) {  this.data = data; } public Code getNext() {  return next; } public void">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-01-04T02:34:52.933Z">
+<meta property="og:updated_time" content="2018-01-04T06:14:29.550Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="java链表的插入，删除，遍历">
-<meta name="twitter:description" content="public class Code {private int data;private Code next;public int getData() { return data;}public void setData(int data) { this.data = data;}public Code getNext() { return next;}public void setNext(Cod">
+<meta name="twitter:description" content="public class Code { private int data; private Code next; public int getData() {  return data; } public void setData(int data) {  this.data = data; } public Code getNext() {  return next; } public void">
 
 
 
@@ -314,7 +314,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-04T10:34:52+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-04T14:14:29+08:00">
                 2018-01-04
               </time>
             
@@ -382,9 +382,101 @@
       
 
       
-        <p>public class Code {<br>private int data;<br>private Code next;<br>public int getData() {<br> return data;<br>}<br>public void setData(int data) {<br> this.data = data;<br>}<br>public Code getNext() {<br> return next;<br>}<br>public void setNext(Code next) {<br> this.next = next;<br>}<br>}</p>
-<p>public class List {<br> public Code head;<br> List()<br> {<br>  this.head=new Code();<br>  head.setData(0);<br> }<br> List(int n)<br> {<br>  this.head=new Code();<br>  Code p,temp;<br>  p=head;<br>  for(int i=0;i<n;i++) {="" temp="new" code();="" temp.setdata(i+1);="" p.setnext(temp);="" p="p.getNext();" }="" head.setdata(n);="" 遍历节点="" public="" void="" rlist()="" code="" temp;="" while(temp.getnext()!="null)" system.out.println(temp.getdata());="" 删除节点="" dcode(int="" n)="" if(n="">head.getData()){<br>   System.out.println(“找不到第”+n+”个节点”);<br>   return;<br>  }<br>  Code temp;<br>  temp=head;<br>  for(int i=0;i<n-1;i++) {="" temp="temp.getNext();" }="" temp.setnext(temp.getnext().getnext());="" head.setdata(head.getdata()-1);="" 插入节点="" public="" void="" icode(int="" n,int="" d)="" if(n="">head.getData()+1){<br>   System.out.println(“找不到第”+n+”个节点”);<br>   return;<br>  }<br>  Code p=new Code();<br>  p.setData(d);<br>  Code temp;<br>  temp=head;<br>  for(int i=0;i&lt;n-1;i++)<br>  {<br>   temp=temp.getNext();<br>        }<br>  p.setNext(temp.getNext());<br>  temp.setNext(p);<br> }<br> public static void main(String args[])<br> {<br>  List l=new List(5);<br>  l.rList();<br>  l.iCode(3,8);<br>  l.rList();<br>  l.dCode(4);<br>  l.rList();<br> }<br>} </n-1;i++)></n;i++)></p>
+        <pre><code>public class Code {
+private int data;
+private Code next;
+public int getData() {
+ return data;
+}
+public void setData(int data) {
+ this.data = data;
+}
+public Code getNext() {
+ return next;
+}
+public void setNext(Code next) {
+ this.next = next;
+}
+}
 
+
+public class List {
+ public Code head;
+ List()
+ {
+  this.head=new Code();
+  head.setData(0);
+ }
+ List(int n)
+ {
+  this.head=new Code();
+  Code p,temp;
+  p=head;
+  for(int i=0;i&lt;n;i++)
+  {
+   temp=new Code();
+   temp.setData(i+1);
+   p.setNext(temp);
+   p=p.getNext();
+  }
+  head.setData(n);
+ }
+ //遍历节点
+ public void rList()
+ {
+  Code temp;
+  temp=head;
+  while(temp.getNext()!=null)
+  {
+   temp=temp.getNext();
+   System.out.println(temp.getData());
+  }
+ }
+ //删除节点
+ public void dCode(int n)
+ {
+  if(n&gt;head.getData()){
+   System.out.println(&quot;找不到第&quot;+n+&quot;个节点&quot;);
+   return;
+  }
+  Code temp;
+  temp=head;
+  for(int i=0;i&lt;n-1;i++)
+  {
+   temp=temp.getNext();
+  }
+  temp.setNext(temp.getNext().getNext());
+  head.setData(head.getData()-1);
+ }
+ //插入节点
+ public void iCode(int n,int d)
+ {
+  if(n&gt;head.getData()+1){
+   System.out.println(&quot;找不到第&quot;+n+&quot;个节点&quot;);
+   return;
+  }
+  Code p=new Code();
+  p.setData(d);
+  Code temp;
+  temp=head;
+  for(int i=0;i&lt;n-1;i++)
+  {
+   temp=temp.getNext();
+        }
+  p.setNext(temp.getNext());
+  temp.setNext(p);
+ }
+ public static void main(String args[])
+ {
+  List l=new List(5);
+  l.rList();
+  l.iCode(3,8);
+  l.rList();
+  l.dCode(4);
+  l.rList();
+ }
+} 
+</code></pre>
       
     </div>
 
@@ -416,8 +508,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/01/03/hexo1/" rel="next" title="github利用hexo搭建博客">
-                <i class="fa fa-chevron-left"></i> github利用hexo搭建博客
+              <a href="/2018/01/04/二叉树1/" rel="next" title="二叉树分类">
+                <i class="fa fa-chevron-left"></i> 二叉树分类
               </a>
             
           </div>
@@ -426,8 +518,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/01/04/二叉树1/" rel="prev" title="二叉树分类">
-                二叉树分类 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/01/04/二叉树2/" rel="prev" title="二叉树前序，中序，后序遍历">
+                二叉树前序，中序，后序遍历 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

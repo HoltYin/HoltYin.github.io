@@ -84,18 +84,18 @@
 
 
 
-<meta name="description" content="package 树; import java.util.ArrayList;import java.util.List; public class Tree {    private Node root;    private List list=new ArrayList();    public Tree(){        init();    }    //树的初始化:先从叶节点开始,由叶">
+<meta name="description" content="package 树;  import java.util.ArrayList; import java.util.List;  public class Tree {     private Node root;     private List&amp;lt;Node&amp;gt; list=new ArrayList&amp;lt;Node&amp;gt;();     public Tree(){         ini">
 <meta name="keywords" content="数据结构">
 <meta property="og:type" content="article">
 <meta property="og:title" content="二叉树前序，中序，后序遍历">
 <meta property="og:url" content="http://HoltYin.github.io/2018/01/04/二叉树2/index.html">
 <meta property="og:site_name" content="HoltYin">
-<meta property="og:description" content="package 树; import java.util.ArrayList;import java.util.List; public class Tree {    private Node root;    private List list=new ArrayList();    public Tree(){        init();    }    //树的初始化:先从叶节点开始,由叶">
+<meta property="og:description" content="package 树;  import java.util.ArrayList; import java.util.List;  public class Tree {     private Node root;     private List&amp;lt;Node&amp;gt; list=new ArrayList&amp;lt;Node&amp;gt;();     public Tree(){         ini">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-01-04T06:10:54.124Z">
+<meta property="og:updated_time" content="2018-01-04T06:14:29.550Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="二叉树前序，中序，后序遍历">
-<meta name="twitter:description" content="package 树; import java.util.ArrayList;import java.util.List; public class Tree {    private Node root;    private List list=new ArrayList();    public Tree(){        init();    }    //树的初始化:先从叶节点开始,由叶">
+<meta name="twitter:description" content="package 树;  import java.util.ArrayList; import java.util.List;  public class Tree {     private Node root;     private List&amp;lt;Node&amp;gt; list=new ArrayList&amp;lt;Node&amp;gt;();     public Tree(){         ini">
 
 
 
@@ -314,7 +314,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-04T14:10:54+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-04T14:14:29+08:00">
                 2018-01-04
               </time>
             
@@ -382,10 +382,42 @@
       
 
       
-        <p>package 树;</p>
-<p>import java.util.ArrayList;<br>import java.util.List;</p>
-<p>public class Tree {<br>    private Node root;<br>    private List<node> list=new ArrayList<node>();<br>    public Tree(){<br>        init();<br>    }<br>    //树的初始化:先从叶节点开始,由叶到根<br>    public void init(){<br>        Node x=new Node(“X”,null,null);<br>        Node y=new Node(“Y”,null,null);<br>        Node d=new Node(“d”,x,y);<br>        Node e=new Node(“e”,null,null);<br>        Node f=new Node(“f”,null,null);<br>        Node c=new Node(“c”,e,f);<br>        Node b=new Node(“b”,d,null);<br>        Node a=new Node(“a”,b,c);<br>        root =a;<br>    }<br>    //定义节点类：<br>    private class Node{<br>      private String data;<br>      private Node lchid;//定义指向左子树的指针<br>      private Node rchild;//定义指向右子树的指针<br>      public Node(String data,Node lchild,Node rchild){<br>          this.data=data;<br>          this.lchid=lchild;<br>          this.rchild=rchild;<br>      }<br>    }</node></node></p>
-<pre><code>/**
+        <pre><code>package 树;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Tree {
+    private Node root;
+    private List&lt;Node&gt; list=new ArrayList&lt;Node&gt;();
+    public Tree(){
+        init();
+    }
+    //树的初始化:先从叶节点开始,由叶到根
+    public void init(){
+        Node x=new Node(&quot;X&quot;,null,null);
+        Node y=new Node(&quot;Y&quot;,null,null);
+        Node d=new Node(&quot;d&quot;,x,y);
+        Node e=new Node(&quot;e&quot;,null,null);
+        Node f=new Node(&quot;f&quot;,null,null);
+        Node c=new Node(&quot;c&quot;,e,f);
+        Node b=new Node(&quot;b&quot;,d,null);
+        Node a=new Node(&quot;a&quot;,b,c);
+        root =a;
+    }
+    //定义节点类：
+    private class Node{
+      private String data;
+      private Node lchid;//定义指向左子树的指针
+      private Node rchild;//定义指向右子树的指针
+      public Node(String data,Node lchild,Node rchild){
+          this.data=data;
+          this.lchid=lchild;
+          this.rchild=rchild;
+      }
+    }
+
+/**
   * 对该二叉树进行前序遍历 结果存储到list中 前序遍历:ABDXYCEF
   */
  public void preOrder(Node node)
@@ -512,8 +544,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/01/04/二叉树1/" rel="next" title="二叉树分类">
-                <i class="fa fa-chevron-left"></i> 二叉树分类
+              <a href="/2018/01/04/链表1/" rel="next" title="java链表的插入，删除，遍历">
+                <i class="fa fa-chevron-left"></i> java链表的插入，删除，遍历
               </a>
             
           </div>
