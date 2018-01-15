@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://HoltYin.github.io/2018/01/15/redis2/</loc>
+    
+    <lastmod>2018-01-15T03:24:21.933Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://HoltYin.github.io/2018/01/15/redis1/</loc>
+    
+    <lastmod>2018-01-15T03:24:21.917Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://HoltYin.github.io/2018/01/15/%E9%93%BE%E8%A1%A81/</loc>
     
     <lastmod>2018-01-15T03:21:43.211Z</lastmod>
@@ -19,20 +33,6 @@
     <loc>http://HoltYin.github.io/2018/01/15/%E4%BA%8C%E5%8F%89%E6%A0%912/</loc>
     
     <lastmod>2018-01-15T03:21:43.194Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://HoltYin.github.io/2018/01/04/redis1/</loc>
-    
-    <lastmod>2018-01-04T06:20:01.663Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://HoltYin.github.io/2018/01/04/redis2/</loc>
-    
-    <lastmod>2018-01-04T06:19:50.102Z</lastmod>
     
   </url>
   
@@ -65,14 +65,14 @@
   </url>
   
   <url>
-    <loc>http://HoltYin.github.io/2018/01/03/%E9%AB%98%E5%B9%B6%E5%8F%911/</loc>
+    <loc>http://HoltYin.github.io/2018/01/03/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C1/</loc>
     
     <lastmod>2018-01-03T03:10:28.981Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://HoltYin.github.io/2018/01/03/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C1/</loc>
+    <loc>http://HoltYin.github.io/2018/01/03/%E9%AB%98%E5%B9%B6%E5%8F%911/</loc>
     
     <lastmod>2018-01-03T03:10:28.981Z</lastmod>
     
