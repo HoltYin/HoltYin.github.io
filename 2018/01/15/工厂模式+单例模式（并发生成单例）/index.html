@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="hexo," />
+  <meta name="keywords" content="设计模式," />
 
 
 
@@ -85,16 +85,16 @@
 
 
 <meta name="description" content="描述：对象的新建统一由工厂创建，避免客户端直接通过构造方法新建实例；对于创建对象的工厂可以可以使其在整个应用中保持唯一的实例，避免过多的垃圾工厂对象。  场景：一个&amp;lt;发送者&amp;gt;可以发送邮件或者短信，为日后扩展发送文件功能，可以定义短信工厂和邮件工厂生产&amp;lt;发送者&amp;gt;，为方便管理，提供一个工厂管理类负责生成工厂实例，其能保证生成的工厂实例唯一。  实现：  定义发送者：  inte">
-<meta name="keywords" content="hexo">
+<meta name="keywords" content="设计模式">
 <meta property="og:type" content="article">
-<meta property="og:title" content="github利用hexo搭建博客">
+<meta property="og:title" content="工厂模式+单例模式（并发生成单例）">
 <meta property="og:url" content="http://HoltYin.github.io/2018/01/15/工厂模式+单例模式（并发生成单例）/index.html">
 <meta property="og:site_name" content="HoltYin">
 <meta property="og:description" content="描述：对象的新建统一由工厂创建，避免客户端直接通过构造方法新建实例；对于创建对象的工厂可以可以使其在整个应用中保持唯一的实例，避免过多的垃圾工厂对象。  场景：一个&amp;lt;发送者&amp;gt;可以发送邮件或者短信，为日后扩展发送文件功能，可以定义短信工厂和邮件工厂生产&amp;lt;发送者&amp;gt;，为方便管理，提供一个工厂管理类负责生成工厂实例，其能保证生成的工厂实例唯一。  实现：  定义发送者：  inte">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-01-15T03:15:22.752Z">
+<meta property="og:updated_time" content="2018-01-15T03:19:46.088Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="github利用hexo搭建博客">
+<meta name="twitter:title" content="工厂模式+单例模式（并发生成单例）">
 <meta name="twitter:description" content="描述：对象的新建统一由工厂创建，避免客户端直接通过构造方法新建实例；对于创建对象的工厂可以可以使其在整个应用中保持唯一的实例，避免过多的垃圾工厂对象。  场景：一个&amp;lt;发送者&amp;gt;可以发送邮件或者短信，为日后扩展发送文件功能，可以定义短信工厂和邮件工厂生产&amp;lt;发送者&amp;gt;，为方便管理，提供一个工厂管理类负责生成工厂实例，其能保证生成的工厂实例唯一。  实现：  定义发送者：  inte">
 
 
@@ -129,7 +129,7 @@
 
 
 
-  <title> github利用hexo搭建博客 | HoltYin </title>
+  <title> 工厂模式+单例模式（并发生成单例） | HoltYin </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -299,7 +299,7 @@
             
             
               
-                github利用hexo搭建博客
+                工厂模式+单例模式（并发生成单例）
               
             
           </h1>
@@ -314,7 +314,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-15T11:15:22+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-15T11:19:46+08:00">
                 2018-01-15
               </time>
             
@@ -337,8 +337,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/hexo/" itemprop="url" rel="index">
-                    <span itemprop="name">hexo</span>
+                  <a href="/categories/设计模式/" itemprop="url" rel="index">
+                    <span itemprop="name">设计模式</span>
                   </a>
                 </span>
 
@@ -505,7 +505,7 @@ public static void main(String[] args) {
       
         <div class="post-tags">
           
-            <a href="/tags/hexo/" rel="tag"># hexo</a>
+            <a href="/tags/设计模式/" rel="tag"># 设计模式</a>
           
         </div>
       
@@ -538,7 +538,7 @@ public static void main(String[] args) {
     <div class="post-spread">
       
         <div class="ds-share flat" data-thread-key="2018/01/15/工厂模式+单例模式（并发生成单例）/"
-     data-title="github利用hexo搭建博客"
+     data-title="工厂模式+单例模式（并发生成单例）"
      data-content=""
      data-url="http://HoltYin.github.io/2018/01/15/工厂模式+单例模式（并发生成单例）/">
   <div class="ds-share-inline">
@@ -571,7 +571,7 @@ public static void main(String[] args) {
   <div class="comments" id="comments">
     
       <div class="ds-thread" data-thread-key="2018/01/15/工厂模式+单例模式（并发生成单例）/"
-           data-title="github利用hexo搭建博客" data-url="http://HoltYin.github.io/2018/01/15/工厂模式+单例模式（并发生成单例）/">
+           data-title="工厂模式+单例模式（并发生成单例）" data-url="http://HoltYin.github.io/2018/01/15/工厂模式+单例模式（并发生成单例）/">
       </div>
     
   </div>
@@ -618,7 +618,7 @@ public static void main(String[] args) {
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-count">9</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -627,7 +627,7 @@ public static void main(String[] args) {
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

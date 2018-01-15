@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[github利用hexo搭建博客]]></title>
+    <title><![CDATA[工厂模式+单例模式（并发生成单例）]]></title>
     <url>%2F2018%2F01%2F15%2F%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F%2B%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F%EF%BC%88%E5%B9%B6%E5%8F%91%E7%94%9F%E6%88%90%E5%8D%95%E4%BE%8B%EF%BC%89%2F</url>
     <content type="text"><![CDATA[描述：对象的新建统一由工厂创建，避免客户端直接通过构造方法新建实例；对于创建对象的工厂可以可以使其在整个应用中保持唯一的实例，避免过多的垃圾工厂对象。 场景：一个&lt;发送者&gt;可以发送邮件或者短信，为日后扩展发送文件功能，可以定义短信工厂和邮件工厂生产&lt;发送者&gt;，为方便管理，提供一个工厂管理类负责生成工厂实例，其能保证生成的工厂实例唯一。 实现： 定义发送者： interface Sender { public void send(String message); } 实现短信发送者： class SmsSender implements Sender { @Override public void send(String message) { System.out.println(&quot;发送短信：&quot; + message); } } 实现邮件发送者： class EmailSender implements Sender { @Override public void send(String message) { System.out.println(&quot;发送邮件：&quot; + message); } } 定义工厂，专门负责生产发送者： interface Factory { Sender getSender(); } 定义一个具体的短信发送者工厂： class SmsFactory implements Factory { @Override public Sender getSender() { return new SmsSender(); } } 定义一个具体的邮件发送者工厂： class EmailFactory implements Factory { @Override public Sender getSender() { return new EmailSender(); } } 定义一个工厂管理者，负责生成具体的工厂实例；这里特意使用两种方式生成工厂实例，基本保证了并发情况下生成工厂的唯一实例；对于同步的实现，仅有在工厂为空的情况下才存在同步。 class FactoryManager { private static class SingletoSmsFactory { private static Factory instance = new SmsFactory(); private static Factory getInstance() { return SingletoSmsFactory.instance; } } private static class SingletoEmailFactory { private static Factory instance = null; private static synchronized void initInstance() { if(null == instance) { instance = new EmailFactory(); } } private static Factory getInstance() { if(null == instance) { initInstance(); } return instance; } } public static Factory getFactory(Class clazz) { String className = clazz.getName(); Factory factory = null; if(className.equals(SmsFactory.class.getName())) { factory = SingletoSmsFactory.getInstance(); } if(className.equals(EmailFactory.class.getName())) { factory = SingletoEmailFactory.getInstance(); } return factory; } } 客户端调用，循环10次是为了查看多次生成的工厂实例是否唯一。 public static void main(String[] args) { for(int i=0; i&lt;10; i++) { Factory smsFactory = FactoryManager.getFactory(SmsFactory.class); Sender sender = smsFactory.getSender(); sender.send(&quot;hello world!&quot;); System.out.println(&quot;短信工厂:&quot; + smsFactory); Factory emailFactory = FactoryManager.getFactory(EmailFactory.class); sender = emailFactory.getSender(); sender.send(&quot;hello world!&quot;); System.out.println(&quot;邮件工厂:&quot; + emailFactory); } }]]></content>
       <categories>
-        <category>hexo</category>
+        <category>设计模式</category>
       </categories>
       <tags>
-        <tag>hexo</tag>
+        <tag>设计模式</tag>
       </tags>
   </entry>
   <entry>
@@ -19,8 +19,8 @@
         <category>redis</category>
       </categories>
       <tags>
-        <tag>高并发</tag>
         <tag>redis</tag>
+        <tag>高并发</tag>
       </tags>
   </entry>
   <entry>
@@ -31,8 +31,8 @@
         <category>redis</category>
       </categories>
       <tags>
-        <tag>高并发</tag>
         <tag>redis</tag>
+        <tag>高并发</tag>
       </tags>
   </entry>
   <entry>
@@ -87,8 +87,8 @@
         <category>java高并发</category>
       </categories>
       <tags>
-        <tag>java</tag>
         <tag>高并发</tag>
+        <tag>java</tag>
       </tags>
   </entry>
   <entry>
