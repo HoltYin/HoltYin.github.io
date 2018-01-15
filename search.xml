@@ -1,14 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[工厂模式+单例模式（并发生成单例）]]></title>
-    <url>%2F2018%2F01%2F15%2F%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F%2B%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F%EF%BC%88%E5%B9%B6%E5%8F%91%E7%94%9F%E6%88%90%E5%8D%95%E4%BE%8B%EF%BC%89%2F</url>
+    <title><![CDATA[java链表的插入，删除，遍历（转）]]></title>
+    <url>%2F2018%2F01%2F15%2F%E9%93%BE%E8%A1%A81%2F</url>
+    <content type="text"><![CDATA[public class Code { private int data; private Code next; public int getData() { return data; } public void setData(int data) { this.data = data; } public Code getNext() { return next; } public void setNext(Code next) { this.next = next; } } public class List { public Code head; List() { this.head=new Code(); head.setData(0); } List(int n) { this.head=new Code(); Code p,temp; p=head; for(int i=0;i&lt;n;i++) { temp=new Code(); temp.setData(i+1); p.setNext(temp); p=p.getNext(); } head.setData(n); } //遍历节点 public void rList() { Code temp; temp=head; while(temp.getNext()!=null) { temp=temp.getNext(); System.out.println(temp.getData()); } } //删除节点 public void dCode(int n) { if(n&gt;head.getData()){ System.out.println(&quot;找不到第&quot;+n+&quot;个节点&quot;); return; } Code temp; temp=head; for(int i=0;i&lt;n-1;i++) { temp=temp.getNext(); } temp.setNext(temp.getNext().getNext()); head.setData(head.getData()-1); } //插入节点 public void iCode(int n,int d) { if(n&gt;head.getData()+1){ System.out.println(&quot;找不到第&quot;+n+&quot;个节点&quot;); return; } Code p=new Code(); p.setData(d); Code temp; temp=head; for(int i=0;i&lt;n-1;i++) { temp=temp.getNext(); } p.setNext(temp.getNext()); temp.setNext(p); } public static void main(String args[]) { List l=new List(5); l.rList(); l.iCode(3,8); l.rList(); l.dCode(4); l.rList(); } }]]></content>
+      <categories>
+        <category>数据结构</category>
+      </categories>
+      <tags>
+        <tag>数据结构</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[工厂模式+单例模式（并发生成单例）(转)]]></title>
+    <url>%2F2018%2F01%2F15%2F%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F1%2F</url>
     <content type="text"><![CDATA[描述：对象的新建统一由工厂创建，避免客户端直接通过构造方法新建实例；对于创建对象的工厂可以可以使其在整个应用中保持唯一的实例，避免过多的垃圾工厂对象。 场景：一个&lt;发送者&gt;可以发送邮件或者短信，为日后扩展发送文件功能，可以定义短信工厂和邮件工厂生产&lt;发送者&gt;，为方便管理，提供一个工厂管理类负责生成工厂实例，其能保证生成的工厂实例唯一。 实现： 定义发送者： interface Sender { public void send(String message); } 实现短信发送者： class SmsSender implements Sender { @Override public void send(String message) { System.out.println(&quot;发送短信：&quot; + message); } } 实现邮件发送者： class EmailSender implements Sender { @Override public void send(String message) { System.out.println(&quot;发送邮件：&quot; + message); } } 定义工厂，专门负责生产发送者： interface Factory { Sender getSender(); } 定义一个具体的短信发送者工厂： class SmsFactory implements Factory { @Override public Sender getSender() { return new SmsSender(); } } 定义一个具体的邮件发送者工厂： class EmailFactory implements Factory { @Override public Sender getSender() { return new EmailSender(); } } 定义一个工厂管理者，负责生成具体的工厂实例；这里特意使用两种方式生成工厂实例，基本保证了并发情况下生成工厂的唯一实例；对于同步的实现，仅有在工厂为空的情况下才存在同步。 class FactoryManager { private static class SingletoSmsFactory { private static Factory instance = new SmsFactory(); private static Factory getInstance() { return SingletoSmsFactory.instance; } } private static class SingletoEmailFactory { private static Factory instance = null; private static synchronized void initInstance() { if(null == instance) { instance = new EmailFactory(); } } private static Factory getInstance() { if(null == instance) { initInstance(); } return instance; } } public static Factory getFactory(Class clazz) { String className = clazz.getName(); Factory factory = null; if(className.equals(SmsFactory.class.getName())) { factory = SingletoSmsFactory.getInstance(); } if(className.equals(EmailFactory.class.getName())) { factory = SingletoEmailFactory.getInstance(); } return factory; } } 客户端调用，循环10次是为了查看多次生成的工厂实例是否唯一。 public static void main(String[] args) { for(int i=0; i&lt;10; i++) { Factory smsFactory = FactoryManager.getFactory(SmsFactory.class); Sender sender = smsFactory.getSender(); sender.send(&quot;hello world!&quot;); System.out.println(&quot;短信工厂:&quot; + smsFactory); Factory emailFactory = FactoryManager.getFactory(EmailFactory.class); sender = emailFactory.getSender(); sender.send(&quot;hello world!&quot;); System.out.println(&quot;邮件工厂:&quot; + emailFactory); } }]]></content>
       <categories>
         <category>设计模式</category>
       </categories>
       <tags>
         <tag>设计模式</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[二叉树前序，中序，后序遍历（转）]]></title>
+    <url>%2F2018%2F01%2F15%2F%E4%BA%8C%E5%8F%89%E6%A0%912%2F</url>
+    <content type="text"><![CDATA[package 树; import java.util.ArrayList; import java.util.List; public class Tree { private Node root; private List&lt;Node&gt; list=new ArrayList&lt;Node&gt;(); public Tree(){ init(); } //树的初始化:先从叶节点开始,由叶到根 public void init(){ Node x=new Node(&quot;X&quot;,null,null); Node y=new Node(&quot;Y&quot;,null,null); Node d=new Node(&quot;d&quot;,x,y); Node e=new Node(&quot;e&quot;,null,null); Node f=new Node(&quot;f&quot;,null,null); Node c=new Node(&quot;c&quot;,e,f); Node b=new Node(&quot;b&quot;,d,null); Node a=new Node(&quot;a&quot;,b,c); root =a; } //定义节点类： private class Node{ private String data; private Node lchid;//定义指向左子树的指针 private Node rchild;//定义指向右子树的指针 public Node(String data,Node lchild,Node rchild){ this.data=data; this.lchid=lchild; this.rchild=rchild; } } /** * 对该二叉树进行前序遍历 结果存储到list中 前序遍历:ABDXYCEF */ public void preOrder(Node node) { list.add(node); //先将根节点存入list //如果左子树不为空继续往左找，在递归调用方法的时候一直会将子树的根存入list，这就做到了先遍历根节点 if(node.lchid != null) { preOrder(node.lchid); } //无论走到哪一层，只要当前节点左子树为空，那么就可以在右子树上遍历，保证了根左右的遍历顺序 if(node.rchild != null) { preOrder(node.rchild); } } /** * 对该二叉树进行中序遍历 结果存储到list中 */ public void inOrder(Node node) { if(node.lchid!=null){ inOrder(node.lchid); } list.add(node); if(node.rchild!=null){ inOrder(node.rchild); } } /** * 对该二叉树进行后序遍历 结果存储到list中 */ public void postOrder(Node node) { if(node.lchid!=null){ postOrder(node.lchid); } if(node.rchild!=null){ postOrder(node.rchild); } list.add(node); } /** * 返回当前数的深度 * 说明: * 1、如果一棵树只有一个结点，它的深度为1。 * 2、如果根结点只有左子树而没有右子树，那么树的深度是其左子树的深度加1； * 3、如果根结点只有右子树而没有左子树，那么树的深度应该是其右子树的深度加1； * 4、如果既有右子树又有左子树，那该树的深度就是其左、右子树深度的较大值再加1。 * * @return */ public int getTreeDepth(Node node) { if(node.lchid == null &amp;&amp; node.rchild == null) { return 1; } int left=0,right = 0; if(node.lchid!=null) { left = getTreeDepth(node.lchid); } if(node.rchild!=null) { right = getTreeDepth(node.rchild); } return left&gt;right?left+1:right+1; } //得到遍历结果 public List&lt;Node&gt; getResult() { return list; } public static void main(String[] args) { Tree tree=new Tree(); System.out.println(&quot;根节点是:&quot;+tree.root); //tree.preOrder(tree.root); tree.postOrder(tree.root); for(Node node:tree.getResult()){ System.out.println(node.data); } System.out.println(&quot;树的深度是&quot;+tree.getTreeDepth(tree.root)); } }]]></content>
+      <categories>
+        <category>数据结构</category>
+      </categories>
+      <tags>
+        <tag>数据结构</tag>
       </tags>
   </entry>
   <entry>
@@ -33,28 +55,6 @@
       <tags>
         <tag>redis</tag>
         <tag>高并发</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[二叉树前序，中序，后序遍历]]></title>
-    <url>%2F2018%2F01%2F04%2F%E4%BA%8C%E5%8F%89%E6%A0%912%2F</url>
-    <content type="text"><![CDATA[package 树; import java.util.ArrayList; import java.util.List; public class Tree { private Node root; private List&lt;Node&gt; list=new ArrayList&lt;Node&gt;(); public Tree(){ init(); } //树的初始化:先从叶节点开始,由叶到根 public void init(){ Node x=new Node(&quot;X&quot;,null,null); Node y=new Node(&quot;Y&quot;,null,null); Node d=new Node(&quot;d&quot;,x,y); Node e=new Node(&quot;e&quot;,null,null); Node f=new Node(&quot;f&quot;,null,null); Node c=new Node(&quot;c&quot;,e,f); Node b=new Node(&quot;b&quot;,d,null); Node a=new Node(&quot;a&quot;,b,c); root =a; } //定义节点类： private class Node{ private String data; private Node lchid;//定义指向左子树的指针 private Node rchild;//定义指向右子树的指针 public Node(String data,Node lchild,Node rchild){ this.data=data; this.lchid=lchild; this.rchild=rchild; } } /** * 对该二叉树进行前序遍历 结果存储到list中 前序遍历:ABDXYCEF */ public void preOrder(Node node) { list.add(node); //先将根节点存入list //如果左子树不为空继续往左找，在递归调用方法的时候一直会将子树的根存入list，这就做到了先遍历根节点 if(node.lchid != null) { preOrder(node.lchid); } //无论走到哪一层，只要当前节点左子树为空，那么就可以在右子树上遍历，保证了根左右的遍历顺序 if(node.rchild != null) { preOrder(node.rchild); } } /** * 对该二叉树进行中序遍历 结果存储到list中 */ public void inOrder(Node node) { if(node.lchid!=null){ inOrder(node.lchid); } list.add(node); if(node.rchild!=null){ inOrder(node.rchild); } } /** * 对该二叉树进行后序遍历 结果存储到list中 */ public void postOrder(Node node) { if(node.lchid!=null){ postOrder(node.lchid); } if(node.rchild!=null){ postOrder(node.rchild); } list.add(node); } /** * 返回当前数的深度 * 说明: * 1、如果一棵树只有一个结点，它的深度为1。 * 2、如果根结点只有左子树而没有右子树，那么树的深度是其左子树的深度加1； * 3、如果根结点只有右子树而没有左子树，那么树的深度应该是其右子树的深度加1； * 4、如果既有右子树又有左子树，那该树的深度就是其左、右子树深度的较大值再加1。 * * @return */ public int getTreeDepth(Node node) { if(node.lchid == null &amp;&amp; node.rchild == null) { return 1; } int left=0,right = 0; if(node.lchid!=null) { left = getTreeDepth(node.lchid); } if(node.rchild!=null) { right = getTreeDepth(node.rchild); } return left&gt;right?left+1:right+1; } //得到遍历结果 public List&lt;Node&gt; getResult() { return list; } public static void main(String[] args) { Tree tree=new Tree(); System.out.println(&quot;根节点是:&quot;+tree.root); //tree.preOrder(tree.root); tree.postOrder(tree.root); for(Node node:tree.getResult()){ System.out.println(node.data); } System.out.println(&quot;树的深度是&quot;+tree.getTreeDepth(tree.root)); } }]]></content>
-      <categories>
-        <category>数据结构</category>
-      </categories>
-      <tags>
-        <tag>数据结构</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[java链表的插入，删除，遍历]]></title>
-    <url>%2F2018%2F01%2F04%2F%E9%93%BE%E8%A1%A81%2F</url>
-    <content type="text"><![CDATA[public class Code { private int data; private Code next; public int getData() { return data; } public void setData(int data) { this.data = data; } public Code getNext() { return next; } public void setNext(Code next) { this.next = next; } } public class List { public Code head; List() { this.head=new Code(); head.setData(0); } List(int n) { this.head=new Code(); Code p,temp; p=head; for(int i=0;i&lt;n;i++) { temp=new Code(); temp.setData(i+1); p.setNext(temp); p=p.getNext(); } head.setData(n); } //遍历节点 public void rList() { Code temp; temp=head; while(temp.getNext()!=null) { temp=temp.getNext(); System.out.println(temp.getData()); } } //删除节点 public void dCode(int n) { if(n&gt;head.getData()){ System.out.println(&quot;找不到第&quot;+n+&quot;个节点&quot;); return; } Code temp; temp=head; for(int i=0;i&lt;n-1;i++) { temp=temp.getNext(); } temp.setNext(temp.getNext().getNext()); head.setData(head.getData()-1); } //插入节点 public void iCode(int n,int d) { if(n&gt;head.getData()+1){ System.out.println(&quot;找不到第&quot;+n+&quot;个节点&quot;); return; } Code p=new Code(); p.setData(d); Code temp; temp=head; for(int i=0;i&lt;n-1;i++) { temp=temp.getNext(); } p.setNext(temp.getNext()); temp.setNext(p); } public static void main(String args[]) { List l=new List(5); l.rList(); l.iCode(3,8); l.rList(); l.dCode(4); l.rList(); } }]]></content>
-      <categories>
-        <category>数据结构</category>
-      </categories>
-      <tags>
-        <tag>数据结构</tag>
       </tags>
   </entry>
   <entry>
