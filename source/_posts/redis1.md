@@ -1,7 +1,7 @@
 ---
 title: redis在高并发请求下会出现问题吗？
 date: 
-top: 7 #整数，越大越靠前
+top: 8888 #整数，越大越靠前
 tags: [redis,高并发]
 categories: [redis]
 description:

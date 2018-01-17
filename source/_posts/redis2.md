@@ -1,7 +1,7 @@
 ---
 title: redis解决高并发问题实例
 date: 
-top: 9 #整数，越大越靠前
+top: 9999 #整数，越大越靠前
 tags: [redis,高并发]
 categories: [redis]
 description:
