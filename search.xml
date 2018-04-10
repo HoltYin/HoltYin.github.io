@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[RabbitMq延时队列]]></title>
+    <url>%2F2018%2F04%2F10%2Frabbitmq1%2F</url>
+    <content type="text"><![CDATA[应用场景 1.订单业务：用户下单之后30分钟内不处理的话，自动放弃该订单 消息的TTL TTL即Time To Live的缩写，RabbitMQ可以对队列和消息分别设置TTL。设置在队列上， 即队列没有消费者连接时，消息的保留时间，也可以单独为消息设置TTL。超过了这个时间， 我们认为这个消息就死了，称之为死信。 参数解释： 创建queue时参数arguments设置了x-dead-letter-routing-key和x-dead-letter-exchange，会在x-message-ttl时间到期后把消息放到x-dead-letter-routing-key和x-dead-letter-exchange指定的队列中达到延迟队列的目的 延迟队列的实现 rabbitmq实现延迟队列的流程图]]></content>
+      <categories>
+        <category>RabbitMq</category>
+      </categories>
+      <tags>
+        <tag>RabbitMq</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[redis解决高并发问题实例]]></title>
     <url>%2F2018%2F01%2F15%2Fredis2%2F</url>
     <content type="text"><![CDATA[应用场景需要统计友情链接的点击次数，并在后台管理系统中实时显示 存在问题前端可能有多个用户同时点击友情连接，需要考虑对高并发的处理 解决问题使用技术redis+mysql数据库+java 解决方案利用redis缓存每天的数据，数据库中存储除今天外的历史总点击数，每日定时从redis中将缓存数据存入数据库中，并清除redis中缓存数据 方案具体步骤1.在redis中约定一个key的value来存每天友情链接的点击数，数据库中有一个字段会存除今日外的历史总点击数2.前端每次有用户点击友情链接时，会往后台发送请求，后台会往redis中的每天友情链接点击数+13.每日定时将redis中存的每天友情链接点击数同步到数据库的历史总点击数中，并清空redis中存的每天友情链接点击数4.后台管理系统查看点击数时，会取出数据库中的历史总点击数+redis中的每天点击数，则为实时的友情链接点击数 解决问题关键所在1.redis是单线程，无线程安全问题2.redis性能高，Redis读的速度是110000次/s,写的速度是81000次/s，只要不是极端情况下的并发，基本上都可以处理 弊端1.极端情况下的并发情况仍然无法解决]]></content>

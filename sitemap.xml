@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://HoltYin.github.io/2018/04/10/rabbitmq1/</loc>
+    
+    <lastmod>2018-04-10T07:22:57.011Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://HoltYin.github.io/2018/01/15/redis2/</loc>
     
     <lastmod>2018-01-15T03:24:21.933Z</lastmod>
